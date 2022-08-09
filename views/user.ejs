@@ -20,7 +20,9 @@
             <b>Aadhar number</b> : <%= user.aadharnum %> <br>
             <b>Role</b> : <%= user.role %> 
             <img src="data:image/<%=user.img.contentType%>;base64,
-            <%=user.img.data.toString('base64')%>">  </li>
+            <%=user.img.data.toString('base64')%>"> 
+            <img src="data:image/<%=user.img1.contentType%>;base64,
+            <%=user.img1.data.toString('base64')%>">  </li>
     <% }) %>
   
    </ol>

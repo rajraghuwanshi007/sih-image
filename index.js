@@ -87,11 +87,15 @@ app.post("/login", function(req, res){
 app.get("/register",(req,res)=>{
     res.render("register");
 });
+const cpUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'image1', maxCount: 1 }])
 
-app.post("/register", upload.single('image'),function(req, res){
+app.post("/register", cpUpload,function(req, res){
     const username=req.body.username;
     User.register({username: req.body.username, fullname: req.body.fullname, contact:req.body.contact, aadharnum:req.body.aadharnum, role:req.body.role, img: {
-			data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+			data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.files["image"][0].filename)),
+			contentType: 'image/png'
+		},img1: {
+			data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.files["image1"][0].filename)),
 			contentType: 'image/png'
 		} }, req.body.password, function(err, user){
       if (err) {

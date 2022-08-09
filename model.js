@@ -35,11 +35,14 @@ const userSchema= new mongoose.Schema({
         default: "Basic",
         required: true,
       },
-      img:
-	{
-		data: Buffer,
-		contentType: String
-	}
+      img:{
+        data: Buffer,
+        contentType: String
+      },
+      img1:{
+        data: Buffer,
+        contentType: String
+      }
 });
 
 
